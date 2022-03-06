@@ -1,0 +1,83 @@
+<h2
+    style="height: 50x; width: 100%; background-color: red; color: #fff; border-top: 2px solid grey; border-bottom: 2px grey solid; padding-left: 50px;">
+
+    Departments</h2>
+
+<div class="container">
+
+    <h3>Departments</h3>
+    <div class="row">
+        <div class="col-8">
+            <div class="input-group mb-3">
+
+                <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                    aria-describedby="button-addon2" id="search" [ngModel]="searchText"
+                    (ngModelChange)="searchKey($event)" placeholder="Find by name" ngModel>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="input-group mb-3">
+
+                <a class="btn btn-outline-success" routerLink="/create" routerLinkActive="active"
+                    style="background-color: green; color: #fff;" type="button" id="button-addon2">Create New
+                    Department</a>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="cardBox" *ngFor="let department of departmentsList; let i = index;">
+            <h2 class="cardTitle">{{department.name}}</h2>
+            <img class="card-img-top" style="width: 80px; margin-top: 10px;" src="../../../assets/apt.png"
+                alt="Card image cap">
+            <div class="cardFooter">
+                <button class="btn btn-success cardOpen" type="button">
+                    options
+                </button>
+
+                <div class="dropdown" style="width: 20%; float: right; ">
+                    <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a style="padding: 5px; text-decoration: none; background-color: grey; border:black 1px solid; text-align: center;"
+                                [routerLink]="['/edit', department._id]"> <span
+                                    class="glyphicon glyphicon-pencil"></span> Edit</a>
+                        </li>
+                        <li><a (click)="deleteDepartment(department)"
+                                style="padding: 5px; text-decoration: none; background-color: grey; border:black 1px solid;text-align: center;"><span
+                                    class="glyphicon glyphicon-trash"></span> Delete</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+      <nav  *ngIf="totalPages>1"> 
+      
+            <ul class="pagination">
+
+              <li *ngIf="currentPage>1" class="page-item" (click)="previousPage()" ><a class="page-link" href="#">Previous</a></li>
+              <li  *ngFor="let in of counter(totalPages) ;let i = index" class="page-item" (click)="updatePage(i+1)"><a class="page-link" href="#">{{i+1}}</a></li>
+              <li *ngIf="currentPage!=totalPages" class="page-item"  (click)="nextPage()" ><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+</div>

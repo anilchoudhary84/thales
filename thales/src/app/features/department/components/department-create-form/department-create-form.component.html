@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center"> Create Department</h2>
+      <form class="login-form" [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
+
+        <div class="card">
+          <div class="card-body">
+            <div class="form-group">
+              <label class="text-uppercase">Name</label>
+              <input type="text" class="form-control" formControlName="name" />
+            </div>
+
+            <div class="form-group">
+              <label class="text-uppercase">email</label>
+              <input type="text" class="form-control" formControlName="email" />
+            </div>
+            <div class="form-group">
+              <label class="text-uppercase">Telephone</label>
+              <input type="number" class="form-control" formControlName="phoneNumber" />
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-4">
+              <button routerLink='/' type="submit" class="btn btn-secondary mt-2 float-left btn-lg btn-block">
+                Cancel
+              </button>
+            </div>
+            <div class="col-md-4 pull-right">
+              <button [disabled]="!departmentForm.valid" type="submit"
+                class="btn btn-success mt-2 float-right btn-lg btn-block">
+                Save
+              </button>
+            </div>
+          </div>
+         </div>
+
+      </form>
+
+
+
+    </div>
+  </div>
+</div>
